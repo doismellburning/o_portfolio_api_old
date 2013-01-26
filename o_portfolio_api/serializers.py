@@ -11,6 +11,12 @@ class EntrySerializer(serializers.ModelSerializer):
         model = Entry
 
 
+class RegistrationSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = ('first_name', 'last_name', 'email', 'password')
+        model = User
+
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('first_name', 'last_name', 'email')

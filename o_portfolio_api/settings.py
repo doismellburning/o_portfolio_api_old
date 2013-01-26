@@ -67,6 +67,8 @@ TEMPLATE_CONTEXT_PROCESSORS += (
 )
 
 MIDDLEWARE_CLASSES = (
+    'sslify.middleware.SSLifyMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.gzip.GZipMiddleware',
     'django.middleware.http.ConditionalGetMiddleware',
@@ -102,6 +104,7 @@ INSTALLED_APPS = (
 
     # Libraries
     'admin_sso',
+    'corsheaders',
     'debug_toolbar',
     'django_extensions',
     'gunicorn',
@@ -152,6 +155,11 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
+        'api': {
+            'handlers': ['sentry', 'console'],
+            'level': 'DEBUG',
+            'propogate': True,
+        },
         'sentry.errors': {
             'handlers': ['console'],
             'level': 'ERROR',
@@ -164,9 +172,18 @@ LOGGING = {
 DEBUG_TOOLBAR_CONFIG = {'INTERCEPT_REDIRECTS': False}
 INTERNAL_IPS = ('127.0.0.1',)
 
+# CORS Headers
+CORS_ORIGIN_ALLOW_ALL = True
+
 # Rest Framework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.BasicAuthentication',
+    ),
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.JSONPRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
     )
 }
+

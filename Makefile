@@ -5,4 +5,4 @@ help:
 	@echo "    make deploy -- deploy to <hosting>"
 
 deploy:
-	@echo "You should set this up."
+	git push heroku master
