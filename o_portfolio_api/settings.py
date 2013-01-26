@@ -153,6 +153,11 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
+        'api': {
+            'handlers': ['sentry', 'console'],
+            'level': 'DEBUG',
+            'propogate': True,
+        },
         'sentry.errors': {
             'handlers': ['console'],
             'level': 'ERROR',
