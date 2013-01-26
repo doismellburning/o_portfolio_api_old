@@ -4,10 +4,9 @@ OpenPortfolio API Endpoint Documentation
 This is a simple proof-of-concept REST-ful API for an open e-portfolio for use
 by trainee doctors within the NHS.
 
-For speed we use Basic HTTP Authentication (see:
-https://en.wikipedia.org/wiki/Basic_access_authentication). To make sure the
-credentials cannot be intercepted we enforce SSL/TLS so the connection is
-encrypted.
+We use token based sessions for authentication. The token should always be
+sent in request headers using the `WWW-Authenticate` key (see the docs for the
+`login` endpoint below for starting a session).
 
 Currently the API is hosted here:
 
@@ -15,6 +14,28 @@ https://o-portfolio-api.herokuapp.com/
 
 Endpoints
 =========
+
+`login`
++++++++
+
+POST
+----
+
+Creates a new session given the user's credentials. Payload should conform to
+the following::
+
+    {
+        'username': 'fred@blogs.com',
+        'password': 'SEKRET'
+    }
+
+Remember! The username must be the user's email address.
+
+The endpoint will respond with a JSON object containing the token::
+
+    {
+        'token': 'averylontokenstringfoobarbaz'
+    }
 
 `/register`
 +++++++++++
