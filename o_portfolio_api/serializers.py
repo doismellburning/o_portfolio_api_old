@@ -7,6 +7,7 @@ from .models import Entry
 
 class EntrySerializer(serializers.ModelSerializer):
     class Meta:
+        exclude = ('user',)
         model = Entry
 
 

@@ -5,7 +5,7 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic import RedirectView
 
-from .views import EntryEndpoint, UserEndpoint
+from .views import EntryEndpoint, EntryListEndpoint, UserEndpoint, UserRegistrationEndpoint
 
 
 admin.autodiscover()
@@ -15,8 +15,10 @@ urlpatterns = patterns('',
 
     url(r'^favicon.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'favicon.ico')),
 
+    url(r'^register/$', UserRegistrationEndpoint.as_view(), name='register'),
     url(r'^user/$', UserEndpoint.as_view(), name='user'),
-    url(r'^entry/$', EntryEndpoint.as_view(), name='entry'),
+    url(r'^entry/$', EntryListEndpoint.as_view(), name='entry'),
+    url(r'^entry/(?P<pk>\d)/$', EntryEndpoint.as_view(), name='entry'),
 
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 

@@ -1,23 +1,41 @@
 from django.contrib.auth.models import User
 
 from rest_framework.authentication import BasicAuthentication
-from rest_framework.mixin import ListModelMixin, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin
+from rest_framework.generics import CreateAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticated
 
 from .models import Entry
 from .serializers import EntrySerializer, UserSerializer
 
 
-class EntryEndpoint(ListModelMixin, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin):
+class APIAuthMixin(object):
     authentication_classes = (BasicAuthentication,)
     permission_classes = (IsAuthenticated,)
+
+
+class EntryEndpoint(APIAuthMixin, RetrieveUpdateDestroyAPIView):
     model = Entry
     serializer_class = EntrySerializer
 
 
-class UserEndpoint(CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin):
-    authentication_classes = (BasicAuthentication,)
-    permission_classes = (IsAuthenticated,)
+class EntryListEndpoint(APIAuthMixin, ListCreateAPIView):
+    model = Entry
+    serializer_class = EntrySerializer
+
+    def pre_save(self, obj):
+        print(self.request.user)
+        obj.user = self.request.user
+
+
+class UserEndpoint(APIAuthMixin, RetrieveUpdateDestroyAPIView):
+    model = User
+    serializer_class = UserSerializer
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+
+class UserRegistrationEndpoint(CreateAPIView):
     model = User
     serializer_class = UserSerializer
 
