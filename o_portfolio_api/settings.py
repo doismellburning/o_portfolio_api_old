@@ -176,9 +176,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
     ),
     'DEFAULT_RENDERER_CLASSES': (
-        'rest_framework.renderers.BrowsableAPIRenderer',
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.JSONPRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
     )
 }
 
