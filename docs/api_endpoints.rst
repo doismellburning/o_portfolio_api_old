@@ -26,7 +26,7 @@ the following::
 
     {
         'username': 'fred@blogs.com',
-        'password': 'SEKRET'
+        'password': 'SEKRET1234'
     }
 
 Remember! The username must be the user's email address.
