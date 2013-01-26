@@ -107,6 +107,7 @@ INSTALLED_APPS = (
     'gunicorn',
     'never_cache_post',
     'raven.contrib.django',
+    'rest_framework',
     'south',
     'storages',
 
