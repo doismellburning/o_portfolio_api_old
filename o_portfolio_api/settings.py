@@ -111,6 +111,7 @@ INSTALLED_APPS = (
     'never_cache_post',
     'raven.contrib.django',
     'rest_framework',
+    'rest_framework.authtoken',
     'south',
     'storages',
 
