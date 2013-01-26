@@ -84,6 +84,7 @@ MIDDLEWARE_CLASSES = (
 
 AUTHENTICATION_BACKENDS = (
     'admin_sso.auth.DjangoSSOAuthBackend',
+    'o_portfolio_api.auth_backends.CustomUserModelBackend',
 )
 LOGIN_URL = reverse_lazy('auth_login')
 LOGOUT_URL = reverse_lazy('auth_logout')
