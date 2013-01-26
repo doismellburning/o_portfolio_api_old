@@ -7,7 +7,7 @@ class Entry(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
     reflection = models.TextField()
-    created_at = models.DateTimeField(default=timezone.now)
+    created_at = models.DateTimeField(default=timezone.now, editable=False)
     occurred_at = models.DateTimeField()
 
     def __unicode__(self):
