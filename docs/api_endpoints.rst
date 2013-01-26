@@ -15,8 +15,8 @@ https://o-portfolio-api.herokuapp.com/
 Endpoints
 =========
 
-`login`
-+++++++
+`/login`
+++++++++
 
 POST
 ----
