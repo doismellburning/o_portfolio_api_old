@@ -23,7 +23,6 @@ class EntryListEndpoint(APIAuthMixin, ListCreateAPIView):
     serializer_class = EntrySerializer
 
     def pre_save(self, obj):
-        print(self.request.user)
         obj.user = self.request.user
 
 
