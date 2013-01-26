@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 
-from rest_framework.authentication import BasicAuthentication
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.generics import CreateAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticated
 
@@ -9,13 +9,8 @@ from .serializers import EntrySerializer, RegistrationSerializer, UserSerializer
 
 
 class APIAuthMixin(object):
-    authentication_classes = (BasicAuthentication,)
+    authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
-
-    def finalize_response(self, *args, **kwargs):
-        response = super(APIAuthMixin, self).finalize_response(*args, **kwargs)
-        response['Access-Control-Allow-Origin'] = '*'
-        return response
 
 
 class EntryEndpoint(APIAuthMixin, RetrieveUpdateDestroyAPIView):

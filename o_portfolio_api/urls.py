@@ -4,6 +4,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic import RedirectView, TemplateView
+from rest_framework.authtoken.views import ObtainAuthToken
 
 from .views import EntryEndpoint, EntryListEndpoint, UserEndpoint, UserRegistrationEndpoint
 
@@ -16,6 +17,7 @@ urlpatterns = patterns('',
 
     url(r'^favicon.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'favicon.ico')),
 
+    url(r'^login/$', ObtainAuthToken.as_view(), name='login'),
     url(r'^register/$', UserRegistrationEndpoint.as_view(), name='register'),
     url(r'^users/$', UserEndpoint.as_view(), name='user'),
     url(r'^entries/$', EntryListEndpoint.as_view(), name='entry'),
