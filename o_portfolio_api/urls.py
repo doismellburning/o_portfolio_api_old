@@ -3,7 +3,7 @@ from django.conf.urls import *
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.views.generic import RedirectView
+from django.views.generic import RedirectView, TemplateView
 
 from .views import EntryEndpoint, EntryListEndpoint, UserEndpoint, UserRegistrationEndpoint
 
@@ -11,6 +11,7 @@ from .views import EntryEndpoint, EntryListEndpoint, UserEndpoint, UserRegistrat
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^$', TemplateView.as_view(template_name='home.html')),
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^favicon.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'favicon.ico')),
