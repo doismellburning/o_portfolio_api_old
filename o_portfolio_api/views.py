@@ -12,6 +12,11 @@ class APIAuthMixin(object):
     authentication_classes = (BasicAuthentication,)
     permission_classes = (IsAuthenticated,)
 
+    def finalize_response(self, *args, **kwargs):
+        response = super(APIAuthMixin, self).finalize_response(*args, **kwargs)
+        response['Access-Control-Allow-Origin'] = '*'
+        return response
+
 
 class EntryEndpoint(APIAuthMixin, RetrieveUpdateDestroyAPIView):
     model = Entry
