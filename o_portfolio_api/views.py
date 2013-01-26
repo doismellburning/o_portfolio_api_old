@@ -5,7 +5,7 @@ from rest_framework.generics import CreateAPIView, ListCreateAPIView, RetrieveUp
 from rest_framework.permissions import IsAuthenticated
 
 from .models import Entry
-from .serializers import EntrySerializer, UserSerializer
+from .serializers import EntrySerializer, RegistrationSerializer, UserSerializer
 
 
 class APIAuthMixin(object):
@@ -36,5 +36,5 @@ class UserEndpoint(APIAuthMixin, RetrieveUpdateDestroyAPIView):
 
 class UserRegistrationEndpoint(CreateAPIView):
     model = User
-    serializer_class = UserSerializer
+    serializer_class = RegistrationSerializer
 
