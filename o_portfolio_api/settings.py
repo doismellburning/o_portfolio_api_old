@@ -15,7 +15,7 @@ ROOT_DIR = os.path.join(PROJECT_DIR, os.path.pardir)
 DEBUG = bool(os.environ.get('DEBUG', False))
 DEVELOPMENT_SITE = bool(os.environ.get('DEVELOPMENT_SITE', False))
 
-DATABASES = {'default': dj_database_url.config(default='postgres://localhost/o_portfolio_api')}
+DATABASES = {'default': dj_database_url.config(default='postgres://localhost/o_portfolio')}
 
 CACHES = {'default': django_cache_url.config(default='memcached://127.0.0.1:11211')}
 
