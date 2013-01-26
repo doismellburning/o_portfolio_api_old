@@ -3,7 +3,7 @@ API for OPortfolio
 
 A very simple RESTful API for an open e-portfolio for doctors.
 
-See files in `docs` for specific details.
+See files in `docs` for details of the endpoints.
 
 Usage
 =====
