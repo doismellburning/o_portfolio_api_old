@@ -68,6 +68,7 @@ TEMPLATE_CONTEXT_PROCESSORS += (
 
 MIDDLEWARE_CLASSES = (
     'sslify.middleware.SSLifyMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.gzip.GZipMiddleware',
     'django.middleware.http.ConditionalGetMiddleware',
@@ -103,6 +104,7 @@ INSTALLED_APPS = (
 
     # Libraries
     'admin_sso',
+    'corsheaders',
     'debug_toolbar',
     'django_extensions',
     'gunicorn',
@@ -169,6 +171,9 @@ LOGGING = {
 # Debug Toolbar
 DEBUG_TOOLBAR_CONFIG = {'INTERCEPT_REDIRECTS': False}
 INTERNAL_IPS = ('127.0.0.1',)
+
+# CORS Headers
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Rest Framework
 REST_FRAMEWORK = {
