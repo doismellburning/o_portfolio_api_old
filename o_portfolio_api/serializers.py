@@ -25,6 +25,11 @@ class RegistrationSerializer(serializers.ModelSerializer):
         user.set_password(attrs['password'])
         return user
 
+    def validate_username(self, attrs, source):
+        if User.objects.filter(username=attrs[source]).exists():
+            raise serializers.ValidationError('Username already exists')
+        return attrs
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
