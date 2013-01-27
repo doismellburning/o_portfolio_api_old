@@ -21,7 +21,7 @@ urlpatterns = patterns('',
     url(r'^register/$', UserRegistrationEndpoint.as_view(), name='register'),
     url(r'^users/$', UserEndpoint.as_view(), name='user'),
     url(r'^entries/$', EntryListEndpoint.as_view(), name='entry'),
-    url(r'^entries/(?P<pk>\d)/$', EntryEndpoint.as_view(), name='entry'),
+    url(r'^entries/(?P<pk>\d+)/$', EntryEndpoint.as_view(), name='entry'),
 
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
