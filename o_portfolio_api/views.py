@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from rest_framework.authentication import TokenAuthentication
+from rest_framework.authentication import BasicAuthentication, TokenAuthentication
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.generics import CreateAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticated
@@ -9,7 +9,7 @@ from .serializers import EntrySerializer, RegistrationSerializer, UserSerializer
 
 
 class APIAuthMixin(object):
-    authentication_classes = (TokenAuthentication,)
+    authentication_classes = (TokenAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
 
 
