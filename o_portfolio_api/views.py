@@ -9,8 +9,9 @@ from .serializers import EntrySerializer, RegistrationSerializer, UserSerializer
 
 
 class APIAuthMixin(object):
-    authentication_classes = (TokenAuthentication,)
-    permission_classes = (IsAuthenticated,)
+    # authentication_classes = (TokenAuthentication,)
+    # permission_classes = (IsAuthenticated,)
+    pass
 
 
 class EntryEndpoint(APIAuthMixin, RetrieveUpdateDestroyAPIView):
