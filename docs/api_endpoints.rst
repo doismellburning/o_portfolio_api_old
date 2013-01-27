@@ -5,8 +5,9 @@ This is a simple proof-of-concept REST-ful API for an open e-portfolio for use
 by trainee doctors within the NHS.
 
 We use token based sessions for authentication. The token should always be
-sent in request headers using the `WWW-Authenticate` key (see the docs for the
-`login` endpoint below for starting a session).
+sent in request headers using the `Authorization` key and the string literal
+`Token<space>` prefixing your token (see the docs for the `login` endpoint
+below for starting a session).
 
 Currently the API is hosted here:
 
