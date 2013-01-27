@@ -57,8 +57,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
-CSS_DEBUG = os.environ.get('CSS_DEBUG', False)
-
 mimetypes.add_type('text/x-component', '.htc')
 
 TEMPLATE_DEBUG = DEBUG
@@ -81,13 +79,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.transaction.TransactionMiddleware',
     'never_cache_post.middleware.NeverCachePostMiddleware',
     # 'django.middleware.cache.FetchFromCacheMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
-AUTHENTICATION_BACKENDS = (
-    'admin_sso.auth.DjangoSSOAuthBackend',
-    'o_portfolio_api.auth_backends.CustomUserModelBackend',
-)
 LOGIN_URL = reverse_lazy('auth_login')
 LOGOUT_URL = reverse_lazy('auth_logout')
 LOGIN_REDIRECT_URL = '/'
@@ -105,7 +98,6 @@ INSTALLED_APPS = (
     # Libraries
     'admin_sso',
     'corsheaders',
-    'debug_toolbar',
     'django_extensions',
     'gunicorn',
     'never_cache_post',
@@ -168,10 +160,6 @@ LOGGING = {
         },
     }
 }
-
-# Debug Toolbar
-DEBUG_TOOLBAR_CONFIG = {'INTERCEPT_REDIRECTS': False}
-INTERNAL_IPS = ('127.0.0.1',)
 
 # CORS Headers
 CORS_ORIGIN_ALLOW_ALL = True
